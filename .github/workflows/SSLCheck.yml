@@ -8,7 +8,7 @@ on:
     - cron: '0 21 * * *' 
 
 jobs:
-  buildstatic:
+  CheckSSL:
     runs-on: ubuntu-latest
 
     steps:

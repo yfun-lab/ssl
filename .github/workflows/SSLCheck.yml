@@ -1,0 +1,42 @@
+name: ChenYFanのSSLCheck
+
+on: 
+  push:
+    branches: 
+      - master 
+
+jobs:
+  buildstatic:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        ref: master
+    - name: Setup node
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - name: Cache node modules
+      uses: actions/cache@v1
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+
+    - name: Install & Build
+      run: |
+        npm i
+        git clone https://github.com/ChenYFan/CheckSSL --depth=2
+        npm run build
+        cd CheckSSL
+        chmod +x checker.sh
+        ./checker.sh blog.cyfan.top cyfan.top status.cyfan.top tools.cyfan.top so.cyfan.top www.cyfan.top api.cyfan.top pan.cyfan.top cdn.cyfan.top ssl.cyfan.top pixiv.cyfan.top pixiv-img.cyfan.top
+        cp -rf ./output/ct.json ../public/ct.json
+        echo "ssl.cyfan.top" > ../public/CNAME
+        
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.TOKEN }}
+        publish_dir: ./public

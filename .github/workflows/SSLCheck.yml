@@ -3,7 +3,9 @@ name: ChenYFanのSSLCheck
 on: 
   push:
     branches: 
-      - master 
+      - master
+  schedule:
+    - cron: '0 21 * * *' 
 
 jobs:
   buildstatic:

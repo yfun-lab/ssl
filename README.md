@@ -23,7 +23,9 @@
 ## GithubAction
 
 1.Fork此项目，修改`/.github/workflows/SSLCheck.yml`，第36行改成自己的域名，多个域名以空格分开
+
 2.添加变量`TOKEN`为GithubToken
+
 3.保存，该项目会在UTC每天早上5点更新SSL信息
 
 ## Demo：https://ssl.cyfan.top

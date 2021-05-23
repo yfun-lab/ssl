@@ -1,4 +1,4 @@
-name: ChenYFanのSSLCheck
+name: SSL Check
 
 on: 
   push:

@@ -35,7 +35,7 @@ jobs:
         chmod +x checker.sh
         ./checker.sh yfun.top www.yfun.top blog.yfun.top cdn.yfun.top cfp.yfun.top drive.yfun.top gdrive.yfun.top gravatar.yfun.top note.yfun.top page.yfun.top t.yfun.top waline.blog.yfun.top proxy.yfun.top
         cp -rf ./output/ct.json ../public/ct.json
-        echo "ssl.cyfan.top" > ../public/CNAME
+        echo "ssl.yfun.top" > ../public/CNAME
         
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3

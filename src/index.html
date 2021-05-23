@@ -73,7 +73,7 @@
     <script src="//cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
     <script>
         $("#nowYear").text(new Date().getFullYear());
-        var ctJson = "https://ssl.cyfan.top/ct.json?" + new Date().getTime() + Math.random()
+        var ctJson = "./ct.json?" + new Date().getTime() + Math.random()
         $.getJSON(ctJson, function (data) {
             $("#result-spinner").remove();
             $.each(data, function (index, value) {

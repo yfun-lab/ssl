@@ -1,43 +1,28 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>证书透明 - YFun's Blog</title><link rel="apple-touch-icon" sizes="76x76" href="https://img.cyfan.top/pic/img/apple-touch-icon.png"><link rel="icon" type="image/png" href="https://img.cyfan.top/pic/img/favicon.png"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="ChenYFanのSSL透明度报告"><meta name="theme-color" content="#F6B352"><meta name="author" content="CYF"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/suka.css@0.1.2"><style>.item-title{color:#adadad}.ui.table,.ui.table tbody,.ui.table tr td{border:none}.ui.table tr td{padding:.3rem;line-height:1.2rem}</style><!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3"></script><script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script><![endif]--><meta property="og:title" content="SSL Status - SukkaLab"><meta property="og:type" content="Website"><meta property="og:url" content="https://ssl.cyfan.top"><meta name="twitter:card" content="summary"></head><body class="sk-p-4 sk-pt-8 sk-pb-6"><h1 class="ui center aligned header"><i id="icon" class="expeditedssl icon" data-position="left center" style="color:#009688"></i>SSL Status</h1><div class="ui container sk-pt-4"><div class="ui container two column stackable grid container" id="result"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1"></script><script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.js"></script><script type="text/javascript">var ctJson = "./ct.json?" + new Date().getTime() + Math.random()
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>证书透明 - YFun</title><link rel="apple-touch-icon" sizes="76x76" href="https://cdn.jsdelivr.net/gh/oCoke/cdn@master/favicons/32x32.png"><link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/oCoke/cdn@master/favicons/32x32.png"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="YFun SSL 证书透明度报告"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css" integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw" crossorigin="anonymous"><style>.item-title{color:rgba(0,0,0,.54)}.main-card{margin:30px auto;max-width:800px}.t-c-success{color:#66bb6a}.t-c-error{color:#f44336}.t-c-warning{color:#ffb74d}footer a,footer span{color:rgba(0,0,0,.6)}</style></head><body class="mdui-appbar-with-toolbar mdui-theme-primary-teal"><div class="mdui-appbar mdui-appbar-fixed"><div class="mdui-toolbar mdui-color-theme"><a href="javascript:;" class="mdui-typo-headline">证书透明</a><div class="mdui-toolbar-spacer"></div><a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-menu="{target: '#appbar-menu'}"><i class="mdui-icon material-icons">more_vert</i></a><ul class="mdui-menu" id="appbar-menu"><li class="mdui-menu-item" disabled="disabled"><a href="javascript:;" class="mdui-ripple">关于「证书透明」</a></li><li class="mdui-divider"></li><li class="mdui-menu-item"><a href="https://blog.yfun.top" class="mdui-ripple">YFun's Blog</a></li></ul></div></div><div class="main-card"><div class="mdui-panel" id="result" mdui-panel><div id="result-spinner" class="mdui-spinner mdui-spinner-colorful mdui-center"></div></div></div><footer class="mdui-text-center"><span>&copy;<span id="nowYear"></span> YFun (@oCoke)</span><br><br><span>Powered by <a href="https://github.com/yfun-lab/ssl">yfun-lab/ssl</a> & <a href="https://github.com/yfun-lab/CheckSSL">yfun-lab/CheckSSL</a></span></footer><script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js" integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A" crossorigin="anonymous"></script><script src="//cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script><script>$("#nowYear").text(new Date().getFullYear());
+        var ctJson = "https://ssl.cyfan.top/ct.json?" + new Date().getTime() + Math.random()
         $.getJSON(ctJson, function (data) {
+            $("#result-spinner").remove();
             $.each(data, function (index, value) {
                 $("#result").append(`
-                    <div class="column" v-for="item in items">
-                        <div class="ui segment">
-                            <h3 class="ui floated header sk-pl-2">${value.domain}&nbsp;&nbsp;
-                                <small class="sk-text-${value.statuscolor}">${value.status}</small>
-                            </h3>
-                            <div class="ui clearing divider"></div>
-                            <div class="sk-pl-2">
-                                <table class="ui collapsing table unstackable">
-                                    <tbody>
-                                        <tr>
-                                            <td class="item-title sk-text-right">Last check</td>
-                                            <td>${value.check}</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="item-title sk-text-right">Subject</td>
-                                            <td>${value.subject}</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="item-title sk-text-right">Valid from</td>
-                                            <td>${value.start}</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="item-title sk-text-right">Valid until</td>
-                                            <td>${value.expire}</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="item-title sk-text-right">Remaining</td>
-                                            <td>${value.remain} Days</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="item-title sk-text-right">Issuer</td>
-                                            <td>${value.issuer}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                    <div class="i-card mdui-panel-item">
+                        <div class="mdui-panel-item-header">
+                            <div class="mdui-panel-item-title">${value.domain}</div>
+                            <div class="mdui-panel-item-summary t-c-${value.statuscolor}">${value.status}</div>
+                            <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+                        </div>
+                        <div class="mdui-panel-item-body">
+                            <p><span class="item-title">最后检查</span> &nbsp;&nbsp;${value.check}</p>
+
+                            <p><span class="item-title">证书详情</span> &nbsp;&nbsp;${value.subject}</p>
+                            
+                            <p><span class="item-title">开始时间</span> &nbsp;&nbsp;${value.start}</p>
+
+                            <p><span class="item-title">到期时间</span> &nbsp;&nbsp;${value.expire}</p>
+
+                            <p><span class="item-title">剩余</span> &nbsp;&nbsp;${value.remain} 天</p>
+
+                            <p><span class="item-title">颁发机构</span> &nbsp;&nbsp;${value.issuer}</p>
+
                         </div>
                     </div>
                 `);

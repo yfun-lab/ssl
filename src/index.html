@@ -15,23 +15,29 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css"
         integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw" crossorigin="anonymous" />
     <style>
-        .item-title{
+        .item-title {
             color: rgba(0, 0, 0, .54);
         }
+
         .main-card {
             margin: 30px auto;
             max-width: 800px;
         }
+
         .t-c-success {
             color: #66BB6A;
         }
+
         .t-c-error {
             color: #F44336;
         }
+
         .t-c-warning {
             color: #FFB74D;
         }
-        footer a, footer span{
+
+        footer a,
+        footer span {
             color: rgba(0, 0, 0, .6);
         }
     </style>
@@ -45,10 +51,10 @@
             <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-menu="{target: '#appbar-menu'}"><i
                     class="mdui-icon material-icons">more_vert</i></a>
             <ul class="mdui-menu" id="appbar-menu">
-                <li class="mdui-menu-item" disabled>
-                    <a href="javascript:;" class="mdui-ripple">关于「证书透明」</a>
+                <!-- <li class="mdui-menu-item">
+                    <a href="javascript:about();" class="mdui-ripple">关于「证书透明」</a>
                 </li>
-                <li class="mdui-divider"></li>
+                <li class="mdui-divider"></li> -->
                 <li class="mdui-menu-item">
                     <a href="https://blog.yfun.top" class="mdui-ripple">YFun's Blog</a>
                 </li>
@@ -65,7 +71,8 @@
     </div>
     <footer class="mdui-text-center">
         <span>&copy; <span id="nowYear"></span> YFun (@oCoke)</span><br><br>
-        <span>Powered by <a href="https://github.com/yfun-lab/ssl">yfun-lab/ssl</a> & <a href="https://github.com/yfun-lab/CheckSSL">yfun-lab/CheckSSL</a></span>
+        <span>Powered by <a href="https://github.com/yfun-lab/ssl">yfun-lab/ssl</a> & <a
+                href="https://github.com/yfun-lab/CheckSSL">yfun-lab/CheckSSL</a></span>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"
         integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A"
@@ -73,7 +80,16 @@
     <script src="//cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
     <script>
         $("#nowYear").text(new Date().getFullYear());
-        var ctJson = "./ct.json?" + new Date().getTime() + Math.random()
+        var ctJson = "./ct.json?" + new Date().getTime() + Math.random();
+        // function about() {
+        //     mdui.alert(`
+            
+        //     `, '关于「证书透明」', function () {
+
+        //     }, {
+        //         confirmText: "关闭",
+        //     })
+        // }
         $.getJSON(ctJson, function (data) {
             $("#result-spinner").remove();
             $.each(data, function (index, value) {

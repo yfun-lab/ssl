@@ -28,6 +28,7 @@ jobs:
 
     - name: Install & Build
       run: |
+        TZ='Asia/Shanghai'; export TZ
         npm i
         git clone https://github.com/yfun-lab/CheckSSL --depth=2
         npm run build

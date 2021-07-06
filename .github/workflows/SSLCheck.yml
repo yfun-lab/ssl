@@ -34,7 +34,7 @@ jobs:
         npm run build
         cd CheckSSL
         chmod +x checker.sh
-        ./checker.sh yfun.top www.yfun.top blog.yfun.top ssl.yfun.top cdn.yfun.top cfp.yfun.top drive.yfun.top gdrive.yfun.top gravatar.yfun.top note.yfun.top page.yfun.top t.yfun.top waline.blog.yfun.top twikoo.blog.yfun.top proxy.yfun.top github.yfun.top dqjs-proxy.vercel.app hifun.js.org wesay.icu cky.ink
+        ./checker.sh yfun.top www.yfun.top blog.yfun.top ssl.yfun.top cdn.yfun.top cfp.yfun.top drive.yfun.top gdrive.yfun.top gravatar.yfun.top note.yfun.top page.yfun.top t.yfun.top waline.blog.yfun.top twikoo.blog.yfun.top proxy.yfun.top github.yfun.top dqjs-proxy.vercel.app hifun.js.org cky.ink
         cp -rf ./output/ct.json ../public/ct.json
         echo "ssl.yfun.top" > ../public/CNAME
         
